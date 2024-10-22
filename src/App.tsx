@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { addGeoPoint } from './services/dataAcess/geoPointAcess';
 
-function App() {
+const App: React.FC = () => {
+  const testAddGeoPoint = async () => {
+    try {
+      const docId = await addGeoPoint(45.697, -223.486);
+      console.log('Document written with ID: ', docId);
+    } catch (e) {
+      console.error('Error adding document: ', e);
+    }
+  };
+
+  // Chamando a função diretamente aqui
+  testAddGeoPoint();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Teste de adição de GeoPoint</h1>
     </div>
   );
-}
+};
 
-export default App;
+export default  App;
